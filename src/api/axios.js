@@ -1,8 +1,17 @@
 import axios from 'axios';
+import { API_BASE } from './config';
 
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001/api'
+  baseURL: API_BASE
 });
+
+// const api = axios.create({
+//   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001/api'
+// });
+
+// const api = axios.create({
+//   baseURL: process.env.REACT_APP_API_BASE_URL || '/api'
+// });
 
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('token');
