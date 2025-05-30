@@ -1,6 +1,6 @@
 import api from '../api/axios';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import './App.css'; // Create this CSS file
 import { useNavigate } from 'react-router-dom';
 
@@ -25,7 +25,6 @@ function Login() {
   const handleSendOTP = async () => {
     try {
       setLoading(true);
-      //await axios.post('http://localhost:3001/api/auth/send-otp', { phone });
       await api.post('/auth/send-otp', { phone });
       setShowOtpField(true);
       setTimer(112); // Reset timer
@@ -40,7 +39,6 @@ function Login() {
   const handleVerifyOTP = async () => {
     try {
       setLoading(true);
-      //const { data } = await axios.post('http://localhost:3001/api/auth/verify-otp', { phone, otp });
       const { data } = await api.post('/auth/verify-otp', { phone, otp });
       localStorage.setItem('token', data.token);
       setPhone('');
